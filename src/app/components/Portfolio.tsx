@@ -45,7 +45,7 @@ export default function Portfolio({}: { username: string }) {
   return (
     <div>
       <header
-        className="bg-background text-foreground relative flex items-center justify-center h-[20vh]"
+        className="bg-background text-foreground relative flex items-center justify-center h-[25vh] md:h-[35vh] "
         ref={refHeader}
       >
         <div className="absolute z-0 h-full w-full overflow-hidden">
@@ -79,7 +79,7 @@ export default function Portfolio({}: { username: string }) {
           }}
         />
 
-        <div className="absolute -top-[50px] w-full flex justify-center">
+        <div className="absolute -top-[60px] w-full flex justify-center">
           <div className="max-w-3xl text-center w-full z-[200]">
             <Image
               src="https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d"
