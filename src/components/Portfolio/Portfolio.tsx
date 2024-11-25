@@ -4,33 +4,15 @@ import Image from "next/image";
 import SocialsPortfolio, { spotifyVerified } from "./SocialsPortfolio";
 import { usePortfolio } from "@/hooks/userPortfolio";
 import SaveButton from "./SaveButton";
+import { UserPortfolio } from "@/@types/Portfolio";
 
-const userDefault = {
-  name: "Dani Acosta",
-  username: "daniacosta",
-  avatar: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
-  socialLinks: {
-    spotify: {
-      url: "https://open.spotify.com/artist/3IfsgBb93KlSIBNVQOIsHH",
-      monthlyListeners: "810,885",
-      banner:
-        "https://i.scdn.co/image/ab67618600001016fe34b817adcfef3e76e4e2c7",
-      mainColor: "#1DB954",
-      secondaryColor: "#191414",
-    },
-    instagram: {
-      url: "https://www.instagram.com/daniacostatnf/?hl=en",
-      username: "daniacostatnf",
-      followers: "1.2M",
-    },
-  },
-};
-
-export default function Portfolio({ initialUser = userDefault }) {
+export default function Portfolio({
+  initialUser,
+}: {
+  initialUser: UserPortfolio;
+}) {
   const { user, opacity, transformStyle, refHeader, color } =
     usePortfolio(initialUser);
-
-  console.log(user);
 
   return (
     <div className="p-[5px] max-w-[900px] mx-auto">
@@ -47,9 +29,7 @@ export default function Portfolio({ initialUser = userDefault }) {
           <div className="h-full w-full absolute z-[300]" />
 
           <Image
-            src={
-              user.socialLinks.spotify.banner || "/images/default_banner.webp"
-            }
+            src={user.banner || "/images/default_banner.webp"}
             alt="Spotify Banner"
             width={1000}
             height={1000}
@@ -90,12 +70,7 @@ export default function Portfolio({ initialUser = userDefault }) {
                   @{user.username}
                 </h2>
 
-                <SaveButton
-                  mainColor={
-                    user?.socialLinks?.spotify?.banner &&
-                    user.socialLinks.spotify.mainColor
-                  }
-                />
+                <SaveButton mainColor={user?.banner && user.mainColor} />
               </div>
               {user?.socialLinks?.spotify && (
                 <p className="text-start text-white mt-[.4rem]">
