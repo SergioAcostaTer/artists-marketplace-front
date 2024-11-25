@@ -37,7 +37,6 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${circularStd.className} bg-black text-foreground`}>
         <NextIntlClientProvider messages={messages}>
-          <header className="p-4 bg-background text-white h-[8vh] sticky top-0 "></header>
           <main>{children}</main>
         </NextIntlClientProvider>
       </body>
