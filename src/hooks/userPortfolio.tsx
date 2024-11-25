@@ -2,13 +2,16 @@
 import { useEffect, useRef, useState } from "react";
 
 const HEADER_PERCENTAGE = 0.6;
-const COLOR_BACKGROUND = "#550401";
+export const COLOR_BACKGROUND = "#131635";
 
 export function usePortfolio(initialUser: any) {
   const [user, setUser] = useState(initialUser);
   const [opacity, setOpacity] = useState(1);
   const [transformStyle, setTransformStyle] = useState("");
   const refHeader = useRef<HTMLDivElement>(null);
+  const color = initialUser.socialLinks.spotify.banner
+    ? initialUser.socialLinks.spotify.mainColor
+    : COLOR_BACKGROUND;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +43,6 @@ export function usePortfolio(initialUser: any) {
     opacity,
     transformStyle,
     refHeader,
-    COLOR_BACKGROUND,
+    color,
   };
 }

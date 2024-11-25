@@ -9,11 +9,14 @@ const userDefault = {
   name: "Dani Acosta",
   username: "daniacosta",
   avatar: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
-  banner: "https://i.scdn.co/image/ab67618600001016fe34b817adcfef3e76e4e2c7",
   socialLinks: {
     spotify: {
       url: "https://open.spotify.com/artist/3IfsgBb93KlSIBNVQOIsHH",
       monthlyListeners: "810,885",
+      banner:
+        "https://i.scdn.co/image/ab67618600001016fe34b817adcfef3e76e4e2c7",
+      mainColor: "#1DB954",
+      secondaryColor: "#191414",
     },
     instagram: {
       url: "https://www.instagram.com/daniacostatnf/?hl=en",
@@ -21,28 +24,13 @@ const userDefault = {
       followers: "1.2M",
     },
   },
-  tracks: [
-    {
-      title: "Voy a Olvidarte",
-      artist: "Dani Acosta",
-      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
-    },
-    {
-      title: "Voy a Olvidarte",
-      artist: "Dani Acosta",
-      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
-    },
-    {
-      title: "Voy a Olvidarte",
-      artist: "Dani Acosta",
-      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
-    },
-  ],
 };
 
 export default function Portfolio({ initialUser = userDefault }) {
-  const { user, opacity, transformStyle, refHeader, COLOR_BACKGROUND } =
+  const { user, opacity, transformStyle, refHeader, color } =
     usePortfolio(initialUser);
+
+  console.log(user);
 
   return (
     <div className="p-[5px] max-w-[900px] mx-auto">
@@ -53,13 +41,15 @@ export default function Portfolio({ initialUser = userDefault }) {
         <div className="absolute z-0 h-full w-full overflow-hidden rounded-t-lg">
           <div
             className="h-full w-full absolute z-[100]"
-            style={{ backgroundColor: COLOR_BACKGROUND }}
+            style={{ backgroundColor: color }}
           />
 
           <div className="h-full w-full absolute z-[300]" />
 
           <Image
-            src={user.banner}
+            src={
+              user.socialLinks.spotify.banner || "/images/default_banner.webp"
+            }
             alt="Spotify Banner"
             width={1000}
             height={1000}
@@ -77,15 +67,15 @@ export default function Portfolio({ initialUser = userDefault }) {
         <div
           className="h-[50px] w-full absolute z-[100] top-0"
           style={{
-            background: `linear-gradient(180deg, ${COLOR_BACKGROUND} 0%, var(--background) 100%)`,
+            background: `linear-gradient(180deg, ${color} 0%, var(--background) 100%)`,
           }}
         />
 
         <div className="absolute -top-[60px] w-full flex justify-center">
           <div className="text-center w-full">
             <Image
-              src={user.avatar}
-              alt="User Avatar"
+              src={user.avatar || "/images/default_avatar.jpg"}
+              alt={user.name}
               width={100}
               height={100}
               className="rounded-full ml-4 z-[400] relative"
@@ -100,7 +90,12 @@ export default function Portfolio({ initialUser = userDefault }) {
                   @{user.username}
                 </h2>
 
-                <SaveButton />
+                <SaveButton
+                  mainColor={
+                    user?.socialLinks?.spotify?.banner &&
+                    user.socialLinks.spotify.mainColor
+                  }
+                />
               </div>
               {user?.socialLinks?.spotify && (
                 <p className="text-start text-white mt-[.4rem]">
