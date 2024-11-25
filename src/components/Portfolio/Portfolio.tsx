@@ -5,6 +5,7 @@ import SocialsPortfolio, { spotifyVerified } from "./SocialsPortfolio";
 import { usePortfolio } from "@/hooks/userPortfolio";
 import SaveButton from "./SaveButton";
 import { UserPortfolio } from "@/@types/Portfolio";
+import { useTranslations } from "next-intl";
 
 export default function Portfolio({
   initialUser,
@@ -13,9 +14,10 @@ export default function Portfolio({
 }) {
   const { user, opacity, transformStyle, refHeader, color } =
     usePortfolio(initialUser);
+  const t = useTranslations("Portfolio");
 
   return (
-    <div className="p-[5px] max-w-[900px] mx-auto">
+    <div className="p-[5px] max-w-[800px] mx-auto">
       <header
         className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[28vh]"
         ref={refHeader}
@@ -75,8 +77,8 @@ export default function Portfolio({
               {user?.socialLinks?.spotify && (
                 <p className="text-start text-white mt-[.4rem]">
                   <span>
-                    {user.socialLinks.spotify.monthlyListeners} monthly
-                    listeners{" "}
+                    {user.socialLinks.spotify.monthlyListeners}{" "}
+                    {t("monthlyListeners")}{" "}
                     <a
                       className="text-[#3be477] underline"
                       href={user.socialLinks.spotify.url}
@@ -94,7 +96,7 @@ export default function Portfolio({
 
             <main className="mt-[5px]">
               <section className="p-4 bg-background rounded-lg">
-                <h2 className="text-2xl font-bold text-start">About</h2>
+                <h2 className="text-2xl font-bold text-start">{t("about")}</h2>
                 <p className="text-start text-white">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                   nec odio vitae libero ultricies ultricies. Nullam nec

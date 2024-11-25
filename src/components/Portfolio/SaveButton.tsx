@@ -1,5 +1,6 @@
 import { COLOR_BACKGROUND } from "@/hooks/userPortfolio";
 import { lightenHexColor } from "@/lib/colorUtils";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 export default function SaveButton({
@@ -9,6 +10,7 @@ export default function SaveButton({
 }) {
   const [isSaved, setIsSaved] = useState(false);
   const [animate, setAnimate] = useState(false);
+  const t = useTranslations("Portfolio");
 
   const handleSave = () => {
     setAnimate(true);
@@ -48,10 +50,10 @@ export default function SaveButton({
                 d="M5 13l4 4L19 7"
               />
             </svg>
-            Saved
+            {t("saved")}
           </>
         ) : (
-          "Save Profile"
+          t("save")
         )}
       </span>
     </button>
