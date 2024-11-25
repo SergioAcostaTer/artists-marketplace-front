@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${circularStd.className} bg-background text-foreground`}
+        className={`${circularStd.className} bg-black text-foreground`}
       >
-        <header className="p-4 bg-background text-white h-[8vh]"></header>
+        <header className="p-4 bg-background text-white h-[8vh] sticky top-0 "></header>
         <main>{children}</main>
       </body>
     </html>

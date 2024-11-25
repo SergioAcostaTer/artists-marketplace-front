@@ -1,0 +1,129 @@
+"use client";
+
+import Image from "next/image";
+import SocialsPortfolio from "./SocialsPortfolio";
+import { usePortfolio } from "@/hooks/userPortfolio";
+
+const userDefault = {
+  name: "Dani Acosta",
+  username: "daniacosta",
+  avatar: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
+  banner: "https://i.scdn.co/image/ab67618600001016fe34b817adcfef3e76e4e2c7",
+  socialLinks: {
+    spotify: {
+      url: "https://open.spotify.com/artist/3IfsgBb93KlSIBNVQOIsHH",
+      monthlyListeners: "810,885",
+    },
+    instagram: {
+      url: "https://www.instagram.com/daniacostatnf/?hl=en",
+      username: "daniacostatnf",
+      followers: "1.2M",
+    },
+  },
+  tracks: [
+    {
+      title: "Voy a Olvidarte",
+      artist: "Dani Acosta",
+      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
+    },
+    {
+      title: "Voy a Olvidarte",
+      artist: "Dani Acosta",
+      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
+    },
+    {
+      title: "Voy a Olvidarte",
+      artist: "Dani Acosta",
+      cover: "https://i.scdn.co/image/ab67616d00001e02a452b66bc93c1dfca6cd643d",
+    },
+  ],
+};
+
+export default function Portfolio({ initialUser = userDefault }) {
+  const { user, opacity, transformStyle, refHeader, COLOR_BACKGROUND } =
+    usePortfolio(initialUser);
+
+  return (
+    <div className="p-[5px] max-w-3xl mx-auto">
+      <header
+        className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[35vh]"
+        ref={refHeader}
+      >
+        <div className="absolute z-0 h-full w-full overflow-hidden rounded-t-lg">
+          <div
+            className="h-full w-full absolute z-[100]"
+            style={{ backgroundColor: COLOR_BACKGROUND }}
+          />
+
+          <div className="h-full w-full absolute z-[300]" />
+
+          <Image
+            src={user.banner}
+            alt="Spotify Banner"
+            width={1000}
+            height={1000}
+            className="h-full w-full object-cover filter brightness-[.9] z-[200] relative rounded-t-lg"
+            style={{
+              opacity,
+              transform: transformStyle,
+              transition: "transform 0.1s ease-out, opacity 0.2s ease-out",
+            }}
+          />
+        </div>
+      </header>
+
+      <div className="min-h-screen text-white relative">
+        <div
+          className="h-[50px] w-full absolute z-[100] top-0"
+          style={{
+            background: `linear-gradient(180deg, ${COLOR_BACKGROUND} 0%, var(--background) 100%)`,
+          }}
+        />
+
+        <div className="absolute -top-[60px] w-full flex justify-center">
+          <div className="max-w-3xl text-center w-full">
+            <Image
+              src={user.avatar}
+              alt="User Avatar"
+              width={100}
+              height={100}
+              className="rounded-full ml-4 z-[400] relative"
+            />
+            <section className="p-4 bg-background rounded-lg z-[300]">
+              <h1 className="text-3xl font-bold text-start">{user.name}</h1>
+              <h2 className="text-lg text-start">@{user.username}</h2>
+              {user?.socialLinks?.spotify && (
+                <p className="text-start text-white">
+                  <span>
+                    {user.socialLinks.spotify.monthlyListeners} monthly
+                    listeners{" "}
+                    <a
+                      className="text-[#3be477] underline"
+                      href={user.socialLinks.spotify.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Spotify
+                    </a>
+                  </span>
+                </p>
+              )}
+
+              <SocialsPortfolio socialLinks={user.socialLinks} />
+            </section>
+
+            <main className="mt-[5px]">
+              <section className="p-4 bg-background rounded-lg">
+                <h2 className="text-2xl font-bold text-start">About</h2>
+                <p className="text-start text-white">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  nec odio vitae libero ultricies ultricies. Nullam nec
+                </p>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
