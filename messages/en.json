@@ -4,5 +4,9 @@
     "save": "Save Profile",
     "saved": "Saved",
     "about": "About me"
+  },
+  "Login": {
+    "login": "Login",
+    "google": "Continue with Google"
   }
 }
