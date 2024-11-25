@@ -7,10 +7,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "i.scdn.co",
-        port: "",
-        pathname: "/image/**",
+        protocol: "http", 
+        hostname: "**", 
+        port: "**", 
+        pathname: "**", 
       },
     ],
   },

@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const circularStd = localFont({
   src: "../../fonts/CircularStd.ttf",
@@ -36,9 +37,11 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${circularStd.className} bg-black text-foreground`}>
-        <NextIntlClientProvider messages={messages}>
-          <main>{children}</main>
-        </NextIntlClientProvider>
+        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
+          <NextIntlClientProvider messages={messages}>
+            <main>{children}</main>
+          </NextIntlClientProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );

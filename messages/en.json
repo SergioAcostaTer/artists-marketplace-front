@@ -7,6 +7,7 @@
   },
   "Login": {
     "login": "Login",
-    "google": "Continue with Google"
+    "google": "Continue with Google",
+    "loggingIn": "Logging in..."
   }
 }
