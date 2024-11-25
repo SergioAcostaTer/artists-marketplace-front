@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import SocialsPortfolio from "./SocialsPortfolio";
+import SocialsPortfolio, { spotifyVerified } from "./SocialsPortfolio";
 import { usePortfolio } from "@/hooks/userPortfolio";
+import SaveButton from "./SaveButton";
 
 const userDefault = {
   name: "Dani Acosta",
@@ -44,9 +45,9 @@ export default function Portfolio({ initialUser = userDefault }) {
     usePortfolio(initialUser);
 
   return (
-    <div className="p-[5px] max-w-3xl mx-auto">
+    <div className="p-[5px] max-w-[900px] mx-auto">
       <header
-        className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[35vh]"
+        className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[28vh]"
         ref={refHeader}
       >
         <div className="absolute z-0 h-full w-full overflow-hidden rounded-t-lg">
@@ -81,7 +82,7 @@ export default function Portfolio({ initialUser = userDefault }) {
         />
 
         <div className="absolute -top-[60px] w-full flex justify-center">
-          <div className="max-w-3xl text-center w-full">
+          <div className="text-center w-full">
             <Image
               src={user.avatar}
               alt="User Avatar"
@@ -90,10 +91,19 @@ export default function Portfolio({ initialUser = userDefault }) {
               className="rounded-full ml-4 z-[400] relative"
             />
             <section className="p-4 bg-background rounded-lg z-[300]">
-              <h1 className="text-3xl font-bold text-start">{user.name}</h1>
-              <h2 className="text-lg text-start">@{user.username}</h2>
+              <div className="flex flex-col relative">
+                <h1 className="text-3xl font-bold text-start gap-[.35rem] flex items-center leading-none">
+                  {user.name}
+                  {spotifyVerified}
+                </h1>
+                <h2 className="text-lg text-start leading-none mt-[.2rem]">
+                  @{user.username}
+                </h2>
+
+                <SaveButton />
+              </div>
               {user?.socialLinks?.spotify && (
-                <p className="text-start text-white">
+                <p className="text-start text-white mt-[.4rem]">
                   <span>
                     {user.socialLinks.spotify.monthlyListeners} monthly
                     listeners{" "}
