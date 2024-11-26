@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: false ? "https://studiohub.es/api" : "http://localhost:8000/api",
+  baseURL: true ? "https://studiohub.es/api" : "http://localhost:8000/api",
   headers: {
     "Content-Type": "application/json",
   },
