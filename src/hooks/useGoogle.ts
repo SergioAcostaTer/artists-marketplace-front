@@ -29,8 +29,6 @@ const useGoogle = () => {
           }
         );
 
-        console.log(data);
-
         await UserRepository.login({
           email: data.email,
           username: data.email.split("@")[0],

@@ -9,7 +9,7 @@ export function usePortfolio(initialUser: any) {
   const [opacity, setOpacity] = useState(1);
   const [transformStyle, setTransformStyle] = useState("");
   const refHeader = useRef<HTMLDivElement>(null);
-  const color = initialUser.banner
+  const color = !!initialUser.banner
     ? initialUser.mainColor
     : COLOR_BACKGROUND;
 

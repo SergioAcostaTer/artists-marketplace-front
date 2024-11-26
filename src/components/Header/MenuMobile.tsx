@@ -16,7 +16,7 @@ export default function MenuMobile() {
       </div>
 
       <div
-        className="w-[60vw] bg-background text-white fixed left-0 z-[400] flex flex-col items-center justify-center top-[8vh] h-[calc(100vh-8vh-4.5rem)]"
+        className="w-[60vw] bg-background text-white fixed left-0 z-[1000] flex flex-col items-center justify-center top-[8vh] h-[calc(100vh-8vh-4.5rem)]"
         style={{
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.3s",

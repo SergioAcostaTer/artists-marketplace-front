@@ -4,5 +4,18 @@
     "save": "Guardar perfil",
     "saved": "Guardado",
     "about": "Acerca de mí"
+  },
+  "Login": {
+    "login": "Acceso",
+    "google": "Continuar con Google",
+    "loggingIn": "Iniciando sesión..."
+  },
+  "NavigatorMobile": {
+    "home": "Inicio",
+    "search": "Buscar",
+    "profile": "Perfil",
+    "notifications": "Notificaciones",
+    "login": "Acceso",
+    "upload": "Subir"
   }
 }

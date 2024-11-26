@@ -17,8 +17,9 @@ export default function SaveButton({
     setIsSaved(!isSaved);
     setTimeout(() => setAnimate(false), 300);
   };
+  
 
-  const color = lightenHexColor(mainColor, 10);
+  const color = lightenHexColor(mainColor || COLOR_BACKGROUND, 20);
 
   return (
     <button

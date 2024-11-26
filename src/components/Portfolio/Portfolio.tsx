@@ -17,24 +17,23 @@ export default function Portfolio({
   const t = useTranslations("Portfolio");
 
   return (
-    <div className="p-[5px] max-w-[800px] mx-auto">
+    <div className="p-[5px] max-w-[800px] mx-auto relative">
       <header
-        className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[28vh]"
+        className="bg-background text-foreground relative flex items-center justify-center h-[18vh] md:h-[28vh] rounded-t-lg"
         ref={refHeader}
       >
         <div className="absolute z-0 h-full w-full overflow-hidden rounded-t-lg">
           <div
-            className="h-full w-full absolute z-[100]"
+            className="h-full w-full absolute z-[100] rounded-t-lg"
             style={{ backgroundColor: color }}
           />
 
-          <div className="h-full w-full absolute z-[300]" />
+          <div className="h-full w-full absolute z-[300] rounded-t-lg" />
 
           <Image
             src={user.banner || "/images/default_banner.webp"}
             alt="Spotify Banner"
-            width={1000}
-            height={1000}
+            layout="fill"
             className="h-full w-full object-cover filter brightness-[.9] z-[200] relative rounded-t-lg"
             style={{
               opacity,
@@ -72,7 +71,7 @@ export default function Portfolio({
                   @{user.username}
                 </h2>
 
-                <SaveButton mainColor={user?.banner && user.mainColor} />
+                <SaveButton mainColor={user?.banner && user?.mainColor} />
               </div>
               {user?.socialLinks?.spotify && (
                 <p className="text-start text-white mt-[.4rem]">

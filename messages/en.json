@@ -9,5 +9,13 @@
     "login": "Login",
     "google": "Continue with Google",
     "loggingIn": "Logging in..."
+  },
+  "NavigatorMobile": {
+    "home": "Home",
+    "search": "Search",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "login": "Login",
+    "upload": "Upload"
   }
 }

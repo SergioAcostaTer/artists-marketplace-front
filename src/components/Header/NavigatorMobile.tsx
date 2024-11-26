@@ -3,25 +3,26 @@
 import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
 import { Me } from "@/@types/Users";
+import { useTranslations } from "next-intl";
 
 const buttonList = [
   {
-    name: "Home",
+    name: "home",
     href: "/",
     src: "/icons/home.svg",
   },
   {
-    name: "Search",
+    name: "search",
     href: "/Search",
     src: "/icons/search.svg",
   },
   {
-    name: "Upload",
+    name: "upload",
     href: "/Upload",
     src: "/icons/add.svg",
   },
   {
-    name: "Notifications",
+    name: "notifications",
     href: "/Notifications",
     src: "/icons/notifications.svg",
   },
@@ -33,6 +34,7 @@ export default function NavigatorMobile({
   initialUser?: Me | null;
 }) {
   const { user, loading, error } = useUser(initialUser);
+  const t = useTranslations("NavigatorMobile");
 
   console.log(user, loading, error);
 
@@ -49,8 +51,8 @@ export default function NavigatorMobile({
               passHref
               className="flex flex-col items-center gap-1"
             >
-              <img src={button.src} alt={button.name} className="h-8 w-8" />
-              <span className="text-xs">{button.name}</span>
+              <img src={button.src} alt={t(button.name)} className="h-8 w-8" />
+              <span className="text-xs">{t(button.name)}</span>
             </Link>
           </li>
         ))}
@@ -69,7 +71,7 @@ export default function NavigatorMobile({
                 />
                 <div className=" bg-gray-300 animate-pulse h-8 w-8 rounded-full z-40 absolute top-0 left-0"></div>
               </div>
-              <span className="text-xs">Profile</span>
+              <span className="text-xs">{t("profile")}</span>
             </Link>
           ) : (
             <Link
@@ -78,7 +80,7 @@ export default function NavigatorMobile({
               className="flex flex-col items-center gap-1"
             >
               <img src="/icons/user.svg" alt="User" className="h-8 w-8" />
-              <span className="text-xs">Login</span>
+              <span className="text-xs">{t("login")}</span>
             </Link>
           )}
         </li>
