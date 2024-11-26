@@ -1,8 +1,21 @@
 {
-    "Portfolio": {
-      "monthlyListeners": "auditeurs mensuels dans",
-      "save": "Enregistrer le profil",
-      "saved": "Enregistré",
-      "about": "Sur moi"
-    }
+  "Portfolio": {
+    "monthlyListeners": "auditeurs mensuels sur",
+    "save": "Enregistrer le profil",
+    "saved": "Enregistré",
+    "about": "Sur moi"
+  },
+  "Login": {
+    "login": "Se connecter",
+    "google": "Continuer avec Google",
+    "loggingIn": "Connexion..."
+  },
+  "NavigatorMobile": {
+    "home": "Maison",
+    "search": "Recherche",
+    "profile": "Profil",
+    "notifications": "Notifications",
+    "login": "Se connecter",
+    "upload": "Télécharger"
   }
+}
