@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { TokenResponse } from "@react-oauth/google";
+import { useRouter } from "next/navigation";
+import { UserRepository } from "@/services/UserRepository";
 
 const useGoogle = () => {
   const [googleUser, setGoogleUser] = useState<TokenResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [userInfo, setUserInfo] = useState<any | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchGoogleUser = async (user: TokenResponse) => {
@@ -27,9 +29,15 @@ const useGoogle = () => {
           }
         );
 
-        alert(JSON.stringify(data));
+        console.log(data);
 
-        setUserInfo(data);
+        await UserRepository.login({
+          email: data.email,
+          username: data.email.split("@")[0],
+          name: data.name,
+        });
+
+        router.push("/");
       } catch (err) {
         const errorMessage = getErrorMessage(err);
         console.error(errorMessage);
@@ -40,7 +48,7 @@ const useGoogle = () => {
     };
 
     if (googleUser) fetchGoogleUser(googleUser);
-  }, [googleUser]);
+  }, [googleUser, router]);
 
   const getErrorMessage = (error: unknown): string => {
     if (axios.isAxiosError(error)) {
@@ -61,7 +69,6 @@ const useGoogle = () => {
 
   return {
     setGoogleUser,
-    userInfo,
     loading,
     error,
   };
