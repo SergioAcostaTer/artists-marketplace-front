@@ -36,10 +36,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${circularStd.className} bg-black text-foreground`}>
-        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
+      <body
+        className={`${circularStd.className} bg-black text-foreground`}
+      >
+        <GoogleOAuthProvider
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+        >
           <NextIntlClientProvider messages={messages}>
-            <main>{children}</main>
+            {children}
           </NextIntlClientProvider>
         </GoogleOAuthProvider>
       </body>

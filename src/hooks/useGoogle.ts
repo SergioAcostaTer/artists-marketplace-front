@@ -35,6 +35,7 @@ const useGoogle = () => {
           email: data.email,
           username: data.email.split("@")[0],
           name: data.name,
+          picture: data.picture,
         });
 
         router.push("/");

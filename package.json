@@ -15,7 +15,8 @@
     "next": "15.0.3",
     "next-intl": "^3.25.1",
     "react": "18.2.0",
-  "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",

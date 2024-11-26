@@ -5,6 +5,7 @@ export const UserRepository = {
     email: string;
     username: string;
     name: string;
+    picture: string;
   }) => {
     try {
       const { data } = await axiosInstance.post("/auth/login", credentials);
@@ -30,7 +31,6 @@ export const UserRepository = {
       });
       return data;
     } catch (error: any) {
-      console.error(error);
       throw new Error(
         error?.response?.data?.message || "Failed to fetch user."
       );

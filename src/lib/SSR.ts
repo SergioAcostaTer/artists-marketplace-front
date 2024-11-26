@@ -5,7 +5,7 @@ async function SSR(callback: any, data = {}): Promise<any> {
   const token = cookieStore.get("token")?.value;
 
   if (!token) {
-    throw new Error("No token found.");
+    return;
   }
 
   return callback({ ...data, token });
