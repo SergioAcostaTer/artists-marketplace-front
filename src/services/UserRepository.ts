@@ -28,8 +28,6 @@ export const UserRepository = {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log(data);
       return data;
     } catch (error: any) {
       console.error(error);
