@@ -24,7 +24,7 @@ export default function MenuMobile() {
       </div>
 
       <div
-        className="w-full fixed top-0 left-0 z-[900] bg-black bg-opacity-50 top-[8vh] h-[calc(100vh-8vh-4.5rem)]"
+        className="w-full fixed top-0 left-0 z-[900] bg-black bg-opacity-50 top-[64px] h-[calc(100vh-64px-4.5rem)]"
         style={{
           display: isOpen ? "block" : "none",
           transitionBehavior: "allow-discrete",
@@ -33,7 +33,7 @@ export default function MenuMobile() {
       />
 
       <div
-        className="w-[60vw] bg-background text-white fixed left-0 z-[1000] flex flex-col items-center justify-center top-[8vh] h-[calc(100vh-8vh-4.5rem)]"
+        className="w-[60vw] bg-background text-white fixed left-0 z-[1000] flex flex-col items-center justify-center top-[64px] h-[calc(100vh-64px-4.5rem)]"
         style={{
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.3s",
