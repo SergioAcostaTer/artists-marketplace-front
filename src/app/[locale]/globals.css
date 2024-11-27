@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes pulse-solid {
+  0%,
+  100% {
+    background-color: #d1d5db; /* Light gray */
+  }
+  50% {
+    background-color: #9ca3af; /* Darker gray */
+  }
+}
+
+.animate-pulse-solid {
+  animation: pulse-solid 1.5s infinite;
+}

@@ -15,8 +15,18 @@ export default function Portfolio({
   initialUser: UserPortfolio;
   userId?: string;
 }) {
-  const { user, opacity, transformStyle, refHeader, color, isProfile } =
-    usePortfolio(initialUser, userId);
+  const {
+    user,
+    opacity,
+    transformStyle,
+    refHeader,
+    color,
+    isProfile,
+    bannerLoaded,
+    setBannerLoaded,
+    avatarLoaded,
+    setAvatarLoaded,
+  } = usePortfolio(initialUser, userId);
   const t = useTranslations("Portfolio");
 
   return (
@@ -33,16 +43,25 @@ export default function Portfolio({
 
           <div className="h-full w-full absolute z-[300] rounded-t-lg" />
 
+          {/* Loader Placeholder for Banner */}
+          {!bannerLoaded && (
+            <div className="h-full w-full absolute bg-gray-300 animate-pulse-solid rounded-t-lg"></div>
+          )}
+
+          {/* Banner Image */}
           <Image
             src={user.banner || "/images/default_banner.webp"}
             alt="Spotify Banner"
             fill
-            className="h-full w-full object-cover filter brightness-[.9] z-[200] relative rounded-t-lg"
+            className={`h-full w-full object-cover filter brightness-[.9] relative rounded-t-lg transition-transform transition-opacity z-[350] ${
+              bannerLoaded ? "opacity-100" : "opacity-0"
+            }`}
             style={{
               opacity,
               transform: transformStyle,
               transition: "transform 0.1s ease-out, opacity 0.2s ease-out",
             }}
+            onLoad={() => setBannerLoaded(true)}
             priority={true}
           />
         </div>
@@ -50,22 +69,32 @@ export default function Portfolio({
 
       <div className="min-h-screen text-white relative">
         <div
-          className="h-[50px] w-full absolute z-[100] top-0"
+          className="h-[50px] w-full absolute z-[400] top-0"
           style={{
             background: `linear-gradient(180deg, ${color} 0%, var(--background) 100%)`,
           }}
         />
 
         <div className="absolute -top-[45px] w-full flex justify-center md:-top-[60px]">
-          <div className="text-center w-full">
+          <div className="text-center w-full relative">
+            {/* Loader Placeholder for Avatar */}
+            {!avatarLoaded && (
+              <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gray-300 animate-pulse-solid ml-4 z-[400] absolute top-0"/>
+            )}
+
+            {/* Avatar Image */}
             <Image
               src={user.avatar || "/images/default_avatar.jpg"}
               alt={user.name}
               width={80}
               height={80}
-              className="rounded-full ml-4 z-[400] relative md:h[100px] md:w-[100px]"
+              className={`rounded-full ml-4 z-[400] relative md:h-[100px] md:w-[100px] transition-opacity ${
+                avatarLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              onLoad={() => setAvatarLoaded(true)}
             />
-            <section className="p-4 bg-background rounded-lg z-[300]">
+
+            <section className="p-4 bg-background rounded-lg z-[300] relative">
               <div className="flex flex-col relative">
                 <h1 className="text-2xl font-bold text-start gap-[.35rem] flex items-center leading-none md:text-3xl">
                   {user.name}

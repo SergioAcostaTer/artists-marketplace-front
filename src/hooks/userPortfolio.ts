@@ -12,6 +12,8 @@ export function usePortfolio(initialUser: any, userId: string) {
   const [transformStyle, setTransformStyle] = useState("");
   const refHeader = useRef<HTMLDivElement>(null);
   const color = !!initialUser.banner ? initialUser.mainColor : COLOR_BACKGROUND;
+  const [bannerLoaded, setBannerLoaded] = useState(false);
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,5 +47,9 @@ export function usePortfolio(initialUser: any, userId: string) {
     refHeader,
     color,
     isProfile,
+    setBannerLoaded,
+    bannerLoaded,
+    avatarLoaded,
+    setAvatarLoaded,
   };
 }
