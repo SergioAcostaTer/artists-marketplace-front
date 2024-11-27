@@ -13,4 +13,19 @@ export const PortfolioRepository = {
       );
     }
   },
+  getMyPortfolio: async ({ token }: { token?: string }) => {
+    try {
+      const { data } = await axiosInstance.get("/portfolio/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(
+        error?.response?.data?.message || "Failed to fetch user."
+      );
+    }
+  },
 };

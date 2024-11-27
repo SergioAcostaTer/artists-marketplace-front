@@ -5,13 +5,12 @@ import { useEffect, useRef, useState } from "react";
 const HEADER_PERCENTAGE = 0.6;
 export const COLOR_BACKGROUND = "#131635";
 
-export function usePortfolio(initialUser: any, userId: string) {
-  const [user, setUser] = useState(initialUser);
+export function usePortfolio(user: any, userId: string) {
   const [opacity, setOpacity] = useState(1);
-  const [isProfile, setIsProfile] = useState(initialUser.userId === userId);
+  const isProfile = user.userId === userId;
   const [transformStyle, setTransformStyle] = useState("");
   const refHeader = useRef<HTMLDivElement>(null);
-  const color = !!initialUser.banner ? initialUser.mainColor : COLOR_BACKGROUND;
+  const color = !!user.banner ? user.mainColor : COLOR_BACKGROUND;
   const [bannerLoaded, setBannerLoaded] = useState(false);
   const [avatarLoaded, setAvatarLoaded] = useState(false);
 
@@ -40,8 +39,6 @@ export function usePortfolio(initialUser: any, userId: string) {
   }, []);
 
   return {
-    user,
-    setUser,
     opacity,
     transformStyle,
     refHeader,

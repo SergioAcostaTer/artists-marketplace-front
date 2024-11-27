@@ -32,13 +32,19 @@ export default async function Profile({
   try {
     const { username } = await params;
     const user = await PortfolioRepository.getPortfolio(username);
-    const token = await getCookie("token");
-    const jwtResponse = jwtVerify(token || "") as IJwtUser;
-    const id = jwtResponse?.id;
+    let id = "";
+
+    try {
+      const token = await getCookie("token");
+      const jwtResponse = jwtVerify(token || "") as IJwtUser;
+      id = jwtResponse?.id;
+    } catch (error) {
+      console.log("Error fetching the user id:", error);
+    }
 
     return (
       <div>
-        <Portfolio initialUser={user} userId={id} />
+        <Portfolio user={user} userId={id} />
       </div>
     );
   } catch (error) {

@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <>
       <div className="h-[64px]" />
-      <header className="p-4 bg-background text-white h-[64px] fixed top-0 z-[1000] gap-2 grid grid-cols-[auto,1fr,auto] items-center w-full">
+      <header className="p-4 bg-background text-white h-[64px] fixed top-0 z-[1000] gap-2 grid grid-cols-[auto,1fr,auto] items-center w-full border-b border-[#ffffff87]">
         <div className="flex justify-between items-center">
           <Image
             src="/logos/vice.webp"

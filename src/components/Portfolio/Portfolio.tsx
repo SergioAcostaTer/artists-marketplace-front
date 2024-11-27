@@ -1,22 +1,22 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import Image from "next/image";
 import SocialsPortfolio, { spotifyVerified } from "./SocialsPortfolio";
 import { usePortfolio } from "@/hooks/userPortfolio";
 import SaveButton from "./SaveButton";
-import { UserPortfolio } from "@/@types/Portfolio";
+import { UserPortfolio, SocialLinks } from "@/@types/Portfolio";
 import { useTranslations } from "next-intl";
 import { ProfileButtons } from "./ProfileButtons";
 
 export default function Portfolio({
-  initialUser,
+  user,
   userId = "",
 }: {
-  initialUser: UserPortfolio;
+  user: UserPortfolio;
   userId?: string;
 }) {
   const {
-    user,
     opacity,
     transformStyle,
     refHeader,
@@ -26,7 +26,7 @@ export default function Portfolio({
     setBannerLoaded,
     avatarLoaded,
     setAvatarLoaded,
-  } = usePortfolio(initialUser, userId);
+  } = usePortfolio(user, userId);
   const t = useTranslations("Portfolio");
 
   return (
@@ -42,7 +42,6 @@ export default function Portfolio({
           />
 
           <div className="h-full w-full absolute z-[300] rounded-t-lg" />
-
           {/* Loader Placeholder for Banner */}
           {!bannerLoaded && (
             <div className="h-full w-full absolute bg-gray-300 animate-pulse-solid rounded-t-lg z-[350]"></div>
@@ -79,7 +78,7 @@ export default function Portfolio({
           <div className="text-center w-full relative">
             {/* Loader Placeholder for Avatar */}
             {!avatarLoaded && (
-              <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gray-300 animate-pulse-solid ml-4 z-[400] absolute top-0"/>
+              <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gray-300 animate-pulse-solid ml-4 z-[400] absolute top-0" />
             )}
 
             {/* Avatar Image */}
@@ -104,7 +103,9 @@ export default function Portfolio({
                   @{user.username}
                 </h2>
 
-                <SaveButton mainColor={user?.banner && user?.mainColor} />
+                <SaveButton
+                  mainColor={user?.banner ? user?.mainColor : undefined}
+                />
 
                 <ProfileButtons userId={user.userId} isProfile={isProfile} />
               </div>
@@ -126,7 +127,7 @@ export default function Portfolio({
                 </p>
               )}
 
-              <SocialsPortfolio socialLinks={user.socialLinks} />
+              {/* <SocialsPortfolio socialLinks={user.socialLinks as SocialLinks} /> */}
             </section>
 
             <main className="mt-[5px]">

@@ -18,7 +18,7 @@ export const ProfileButtons = ({
       {isProfile ? (
         <>
           <Link
-            href="/settings"
+            href="/account/edit"
             className="border border-white rounded-md py-[0.25rem] text-center text-sm flex items-center justify-center"
           >
             {t("edit")}

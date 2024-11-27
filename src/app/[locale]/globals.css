@@ -33,3 +33,17 @@ body {
 .animate-pulse-solid {
   animation: pulse-solid 1.5s infinite;
 }
+
+.label {
+  transform: translateY(0px);
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+input:focus + .label,
+input:not(:placeholder-shown) + .label {
+  transform: translateY(-20px);
+  font-size: 0.85rem;
+  opacity: 1;
+  color: #ffffff;
+}

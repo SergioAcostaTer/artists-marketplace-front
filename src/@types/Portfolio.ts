@@ -24,4 +24,5 @@ export interface UserPortfolio {
   mainColor: string;
   secondaryColor: string;
   socialLinks: SocialLinks;
+  userId: string;
 }

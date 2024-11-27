@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { UserRepository } from "@/services/UserRepository";
 import React from "react";
 
@@ -12,12 +11,10 @@ export default function LogOut({
   className?: string;
   element?: string;
 }) {
-  const router = useRouter();
-
   const handleLogOut = async () => {
     try {
       await UserRepository.logout();
-      router.refresh();
+      window.location.reload();
     } catch (error: any) {
       console.log(error.message);
     }

@@ -37,7 +37,7 @@ export default function NavigatorMobile({
   const t = useTranslations("NavigatorMobile");
 
   return (
-    <nav className="flex items-center justify-between h-[4.5rem] text-white shadow-md sticky bottom-0 z-[1500] bg-background md:hidden">
+    <nav className="flex items-center justify-between h-[4.5rem] text-white shadow-md sticky bottom-0 z-[1500] bg-background md:hidden border-t border-[#ffffff65]">
       <ul className="grid grid-cols-5 w-full">
         {buttonList.map((button) => (
           <li
