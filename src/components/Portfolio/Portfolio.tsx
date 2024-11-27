@@ -45,7 +45,7 @@ export default function Portfolio({
 
           {/* Loader Placeholder for Banner */}
           {!bannerLoaded && (
-            <div className="h-full w-full absolute bg-gray-300 animate-pulse-solid rounded-t-lg"></div>
+            <div className="h-full w-full absolute bg-gray-300 animate-pulse-solid rounded-t-lg z-[350]"></div>
           )}
 
           {/* Banner Image */}

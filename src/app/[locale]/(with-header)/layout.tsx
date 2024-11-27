@@ -19,7 +19,7 @@ export default async function WithHeaderLayout({
   }
 
   return (
-    <div className=" h-screen">
+    <div className="grid grid-rows-[auto,1fr] h-screen">
       <Header />
       <main>{children}</main>
       <NavigatorMobile initialUser={me} />
