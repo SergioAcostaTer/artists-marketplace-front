@@ -13,7 +13,7 @@ const useGoogle = () => {
   useEffect(() => {
     const fetchGoogleUser = async (user: TokenResponse) => {
       if (!user?.access_token) {
-        console.error("No access token provided.");
+        console.log("No access token provided.");
         setError("Invalid Google user access token.");
         return;
       }
@@ -39,7 +39,7 @@ const useGoogle = () => {
         router.push("/");
       } catch (err) {
         const errorMessage = getErrorMessage(err);
-        console.error(errorMessage);
+        console.log(errorMessage);
         setError(errorMessage);
       } finally {
         setLoading(false);

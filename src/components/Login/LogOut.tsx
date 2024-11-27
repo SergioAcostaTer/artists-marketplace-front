@@ -19,7 +19,7 @@ export default function LogOut({
       await UserRepository.logout();
       router.refresh();
     } catch (error: any) {
-      console.error(error.message);
+      console.log(error.message);
     }
   };
 

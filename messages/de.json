@@ -17,5 +17,18 @@
     "notifications": "Benachrichtigungen",
     "login": "Login",
     "upload": "Hochladen"
+  },
+  "ProfileButtons": {
+    "edit": "Profil bearbeiten",
+    "save": "Profil speichern",
+    "saved": "Gespeichert",
+    "about": "Über mich",
+    "share": "Profil teilen",
+    "message": "Nachricht",
+    "report": "Bericht",
+    "collab": "Zusammenarbeit"
+  },
+  "SearchInput": {
+    "search": "Suchen"
   }
 }

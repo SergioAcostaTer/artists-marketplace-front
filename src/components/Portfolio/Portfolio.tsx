@@ -6,14 +6,17 @@ import { usePortfolio } from "@/hooks/userPortfolio";
 import SaveButton from "./SaveButton";
 import { UserPortfolio } from "@/@types/Portfolio";
 import { useTranslations } from "next-intl";
+import { ProfileButtons } from "./ProfileButtons";
 
 export default function Portfolio({
   initialUser,
+  userId = "",
 }: {
   initialUser: UserPortfolio;
+  userId?: string;
 }) {
-  const { user, opacity, transformStyle, refHeader, color } =
-    usePortfolio(initialUser);
+  const { user, opacity, transformStyle, refHeader, color, isProfile } =
+    usePortfolio(initialUser, userId);
   const t = useTranslations("Portfolio");
 
   return (
@@ -33,13 +36,14 @@ export default function Portfolio({
           <Image
             src={user.banner || "/images/default_banner.webp"}
             alt="Spotify Banner"
-            layout="fill"
+            fill
             className="h-full w-full object-cover filter brightness-[.9] z-[200] relative rounded-t-lg"
             style={{
               opacity,
               transform: transformStyle,
               transition: "transform 0.1s ease-out, opacity 0.2s ease-out",
             }}
+            priority={true}
           />
         </div>
       </header>
@@ -52,27 +56,30 @@ export default function Portfolio({
           }}
         />
 
-        <div className="absolute -top-[60px] w-full flex justify-center">
+        <div className="absolute -top-[45px] w-full flex justify-center md:-top-[60px]">
           <div className="text-center w-full">
             <Image
               src={user.avatar || "/images/default_avatar.jpg"}
               alt={user.name}
-              width={100}
-              height={100}
-              className="rounded-full ml-4 z-[400] relative"
+              width={80}
+              height={80}
+              className="rounded-full ml-4 z-[400] relative md:h[100px] md:w-[100px]"
             />
             <section className="p-4 bg-background rounded-lg z-[300]">
               <div className="flex flex-col relative">
-                <h1 className="text-3xl font-bold text-start gap-[.35rem] flex items-center leading-none">
+                <h1 className="text-2xl font-bold text-start gap-[.35rem] flex items-center leading-none md:text-3xl">
                   {user.name}
                   {spotifyVerified}
                 </h1>
-                <h2 className="text-lg text-start leading-none mt-[.2rem]">
+                <h2 className="text-md text-start leading-none mt-[.2rem] md:text-lg md:mt-0">
                   @{user.username}
                 </h2>
 
                 <SaveButton mainColor={user?.banner && user?.mainColor} />
+
+                <ProfileButtons userId={user.userId} isProfile={isProfile} />
               </div>
+
               {user?.socialLinks?.spotify && (
                 <p className="text-start text-white mt-[.4rem]">
                   <span>

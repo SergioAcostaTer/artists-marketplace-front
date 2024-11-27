@@ -33,13 +33,11 @@ export default function NavigatorMobile({
 }: {
   initialUser?: Me | null;
 }) {
-  const { user, loading, error } = useUser(initialUser);
+  const { user } = useUser(initialUser);
   const t = useTranslations("NavigatorMobile");
 
-  console.log(user, loading, error);
-
   return (
-    <nav className="flex items-center justify-between h-[4.5rem] text-white shadow-md sticky bottom-0 z-50 bg-background md:hidden">
+    <nav className="flex items-center justify-between h-[4.5rem] text-white shadow-md sticky bottom-0 z-[1500] bg-background md:hidden">
       <ul className="grid grid-cols-5 w-full">
         {buttonList.map((button) => (
           <li

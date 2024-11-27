@@ -1,5 +1,8 @@
+import { IJwtUser } from "@/@types/Jwt";
 import Portfolio from "@/components/Portfolio/Portfolio";
 import { PortfolioRepository } from "@/services/PortfolioRepository";
+import { getCookie } from "@/utils/cookie";
+import { jwtVerify } from "@/utils/jwt";
 
 // const userDefault = {
 //   name: "Dani Acosta",
@@ -29,17 +32,23 @@ export default async function Profile({
   try {
     const { username } = await params;
     const user = await PortfolioRepository.getPortfolio(username);
-    return (
-      <div>
-        <Portfolio initialUser={user} />
-      </div>
-    );
-  } catch (error) {
-    console.error("Error fetching the user portfolio:", error);
+    const token = await getCookie("token");
+    const jwtResponse = jwtVerify(token || "") as IJwtUser;
+    const id = jwtResponse?.id;
 
     return (
       <div>
-        <p>Error loading profile. Please try again later.</p>
+        <Portfolio initialUser={user} userId={id} />
+      </div>
+    );
+  } catch (error) {
+    console.log("Error fetching the user portfolio:", error);
+
+    return (
+      <div className="text-center w-full h-full flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-bold">404</h1>
+        <h2 className="text-2xl font-bold">User not found</h2>
+        <p>This user does not exist</p>
       </div>
     );
   }

@@ -1,12 +1,24 @@
+// "use client";
+import Image from "next/image";
 import MenuMobile from "./MenuMobile";
+import SearchInput from "./SearchInput";
 
 export default function Header() {
   return (
-    <header className="p-4 bg-background text-white h-[8vh] sticky top-0 flex justify-between items-center z-[1000]">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Logo</h1>
+    <header className="p-4 bg-background text-white h-[64px] sticky top-0 z-[1000] gap-2 grid grid-cols-[auto,1fr,auto] items-center">
+      <div className="flex justify-between items-center">
+        <Image
+          src="/logos/vice.webp"
+          alt="Logo"
+          width={80}
+          height={80}
+          className="w-20 object-contain"
+          priority={true}
+        />
       </div>
-      <div></div>
+      <div>
+        <SearchInput />
+      </div>
       <div>
         <MenuMobile />
       </div>

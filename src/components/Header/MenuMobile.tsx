@@ -1,10 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MenuMobile() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   return (
     <>
@@ -14,6 +22,15 @@ export default function MenuMobile() {
       >
         <img src="/icons/list.svg" alt="Menu" className="h-6 w-6" />
       </div>
+
+      <div
+        className="w-full fixed top-0 left-0 z-[900] bg-black bg-opacity-50 top-[8vh] h-[calc(100vh-8vh-4.5rem)]"
+        style={{
+          display: isOpen ? "block" : "none",
+          transitionBehavior: "allow-discrete",
+        }}
+        onClick={() => setIsOpen(false)}
+      />
 
       <div
         className="w-[60vw] bg-background text-white fixed left-0 z-[1000] flex flex-col items-center justify-center top-[8vh] h-[calc(100vh-8vh-4.5rem)]"

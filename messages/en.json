@@ -17,5 +17,18 @@
     "notifications": "Notifications",
     "login": "Login",
     "upload": "Upload"
+  },
+  "ProfileButtons": {
+    "edit": "Edit Profile",
+    "save": "Save Profile",
+    "saved": "Saved",
+    "about": "About me",
+    "share": "Share Profile",
+    "message": "Message",
+    "report": "Report",
+    "collab": "Collab"
+  },
+  "SearchInput": {
+    "search": "Search"
   }
 }
